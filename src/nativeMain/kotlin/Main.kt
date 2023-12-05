@@ -1,4 +1,6 @@
 import kotlinx.coroutines.*
+import sort.mergeSortAsync
+import sort.mergeSortPlain
 import kotlin.random.Random
 import kotlin.time.measureTime
 

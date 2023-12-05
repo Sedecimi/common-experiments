@@ -1,3 +1,7 @@
+package sort
+
+import async
+
 fun mergeSortPlain(array: IntArray, startIndex: Int = 0, endIndex: Int = array.size-1): IntArray {
     if (array.size <= 1) {
         return array

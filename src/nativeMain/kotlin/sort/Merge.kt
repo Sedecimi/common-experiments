@@ -1,3 +1,5 @@
+package sort
+
 fun merge(leftArray: IntArray, rightArray: IntArray): IntArray {
     val mergedArray = IntArray(leftArray.size + rightArray.size)
     var leftIndex = 0
