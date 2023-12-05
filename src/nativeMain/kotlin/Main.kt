@@ -1,3 +1,5 @@
+import concurrent.FixedCoroutinePool
+import concurrent.Task
 import kotlinx.coroutines.*
 import sort.mergeSortAsync
 import sort.mergeSortPlain
@@ -27,5 +29,26 @@ fun main() = runBlocking {
         mergeSortAsync(asyncArray)
     }.let {
         println("Async sort took $it")
+    }
+
+    fixedPoolLike()
+}
+
+fun fixedPoolLike() {
+    val pool = FixedCoroutinePool<Long>(4)
+    pool.execute(
+        Task("Task") {
+            delay(1000L)
+            0L
+        }
+    )
+
+    for(i in 1..16) {
+            pool.execute(
+                Task("Task-$i") {
+                    delay(1000L)
+                    0L
+                }
+            )
     }
 }
