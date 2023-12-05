@@ -1,6 +1,6 @@
 package sort
 
-import async
+import concarrent.async
 
 fun mergeSortPlain(array: IntArray, startIndex: Int = 0, endIndex: Int = array.size-1): IntArray {
     if (array.size <= 1) {
