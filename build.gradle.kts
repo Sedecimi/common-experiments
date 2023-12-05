@@ -1,8 +1,10 @@
+
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform") version "1.9.21"
     id("com.github.johnrengelman.shadow") version "8.1.1"
+//    id("org.jetbrains.kotlinx.benchmark") version "0.4.4"
     application
 }
 
@@ -29,22 +31,7 @@ kotlin {
     macosArm64 {
         defaultConfig()
     }
-    linuxArm64 {
-        defaultConfig()
-    }
     linuxX64 {
-        defaultConfig()
-    }
-    androidNativeArm32 {
-        defaultConfig()
-    }
-    androidNativeArm64 {
-        defaultConfig()
-    }
-    androidNativeX64 {
-        defaultConfig()
-    }
-    androidNativeX86 {
         defaultConfig()
     }
     mingwX64 {
@@ -87,6 +74,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+//                implementation("org.jetbrains.kotlinx:kotlinx-benchmark-runtime:0.4.4")
             }
         }
     }
@@ -95,3 +83,27 @@ kotlin {
 application {
     mainClass.set("JvmMain")
 }
+/*
+Не смог заставить работать
+
+benchmark {
+    targets {
+        createJmhGenerationRuntimeConfiguration("jvmBenchmark", "1.21")
+//        register("jvm") {
+//            jmhVersion = "1.21"
+//        }
+        // This one matches source set name, e.g. 'jvmMain', 'jvmTest', etc
+        // and register the corresponding compilation (here the 'benchmark' compilation declared in the 'jvm' target)
+        register("jvmBenchmark") {
+//            jmhVersion = "1.21"
+        }
+    }
+    configurations {
+        val main by getting {
+            iterations = 5 // number of iterations
+            iterationTime = 300
+            iterationTimeUnit = "ms"
+        }
+    }
+}
+*/
