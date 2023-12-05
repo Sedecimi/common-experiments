@@ -23,9 +23,9 @@ class FixedCoroutinePool<T>(val workers: Int) {
         }
     }
     fun execute(block: Task<T>) {
-            GlobalScope.launch {
-                channel.send(block)
-            }
+        GlobalScope.launch {
+            channel.send(block)
+        }
     }
 
     suspend fun join() {
