@@ -15,5 +15,5 @@ fun <T> async(func: suspend () -> T): T {
             ret = result.getOrThrow()
         }
     })
-    return ret as T
+    return ret?.let { it as T } ?: throw IllegalStateException()
 }

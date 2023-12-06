@@ -20,6 +20,7 @@ fun main() = runBlocking {
     }.also {
         println("Async array filled")
     }
+    fixedPoolLike()
     measureTime {
         mergeSortPlain(plainArray)
     }.let {
@@ -31,8 +32,6 @@ fun main() = runBlocking {
     }.let {
         println("Async sort took $it")
     }
-
-    fixedPoolLike()
 }
 
 fun fixedPoolLike() {
